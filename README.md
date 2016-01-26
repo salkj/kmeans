@@ -7,7 +7,7 @@ package main
 
 import (
 	"fmt"
-	"kmeans"
+	"github.com/salkj/kmeans"
 )
 
 func main(){
