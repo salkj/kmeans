@@ -1,8 +1,7 @@
-# kmeans
+# k-means.go
 a naive kmeans implementation in Go
 
-Sample
-==========================
+
 ```
 import (
 	"fmt"
