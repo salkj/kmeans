@@ -3,10 +3,11 @@
 *	01/26/2016 02:54 UTC-5
 */ 
 
-package kmeans
+package main
 
 import (
 	"fmt"
+	"kmeans"
 )
 
 func main(){
