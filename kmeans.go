@@ -12,16 +12,16 @@ import (
 
 const DELTA = 0.001 
  
-type point struct{
+type Point struct{
     entry[] float64
 }
  
-type centroid struct{
-    center point
-    points []point
+type Centroid struct{
+    center Point
+    Points []Point
 }
  
-func (p_1 point) distanceTo(p_2 point) float64{
+func (p_1 Point) distanceTo(p_2 Point) float64{
 	sum := float64(0)
 	for e:=0;e<len(p_1.entry);e++{
 		sum += math.Pow((p_1.entry[e] - p_2.entry[e]),2)
@@ -29,24 +29,24 @@ func (p_1 point) distanceTo(p_2 point) float64{
     return math.Sqrt(sum)
 }
  
-func (c_1 *centroid) reCenter() float64{
-    new_centroid := make([]float64,len(c_1.center.entry))
-    for _, e := range c_1.points{
-    	for r:=0;r<len(new_centroid);r++{
-    		new_centroid[r] += e.entry[r]
+func (c_1 *Centroid) reCenter() float64{
+    new_Centroid := make([]float64,len(c_1.center.entry))
+    for _, e := range c_1.Points{
+    	for r:=0;r<len(new_Centroid);r++{
+    		new_Centroid[r] += e.entry[r]
     	}
     }
-    for r:=0;r<len(new_centroid);r++{
-    	new_centroid[r] /= float64(len(c_1.points))
+    for r:=0;r<len(new_Centroid);r++{
+    	new_Centroid[r] /= float64(len(c_1.Points))
     }
     old_center := c_1.center
-    c_1.center = point{new_centroid}
+    c_1.center = Point{new_Centroid}
     return old_center.distanceTo(c_1.center)
 }
  
-func kmeans(data []point, k uint64) (centroids []centroid){
+func KMEANS(data []Point, k uint64) (Centroids []Centroid){
     for i:=uint64(0); i<k; i++{
-        centroids = append(centroids,centroid{center: data[rand.Intn(len(data))]})
+        Centroids = append(Centroids,Centroid{center: data[rand.Intn(len(data))]})
     }
     
     converged := false
@@ -54,18 +54,18 @@ func kmeans(data []point, k uint64) (centroids []centroid){
         for i:= range data{
             min_distance := 9999999.0
             z := 0
-            for v,e:=range centroids {
+            for v,e:=range Centroids {
                 distance := data[i].distanceTo(e.center)
                 if distance < min_distance{
                     min_distance = distance;
                     z = v
                 }
             }
-            centroids[z].points = append(centroids[z].points, data[i])
+            Centroids[z].Points = append(Centroids[z].Points, data[i])
         }
         max_delta := -9999999.0
-        for i:= range centroids {
-            movement := centroids[i].reCenter()
+        for i:= range Centroids {
+            movement := Centroids[i].reCenter()
             if movement > max_delta{
                 max_delta = movement
             }
@@ -74,9 +74,9 @@ func kmeans(data []point, k uint64) (centroids []centroid){
             converged = true
             return
         }
-        for i:= range centroids {
-            centroids[i].points = nil
+        for i:= range Centroids {
+            Centroids[i].Points = nil
         }
     }
-    return centroids
+    return Centroids
 }
