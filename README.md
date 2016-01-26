@@ -11,7 +11,6 @@ import (
 )
 
 func main() {
-	fmt.Println("Hello World!")
 	data := []kmeans.Point{}
     data = append(data, kmeans.Point{[]float64{1.0,3.0,5.0,2.0}})
     data = append(data, kmeans.Point{[]float64{43.0,7.0,12.0,7.0}})
