@@ -10,13 +10,13 @@ import (
 	"github.com/salkj/kmeans"
 )
 
-func main(){
-	data := []point{}
-	data = append(data, point{[]float64{1.0,3.0,5.0,2.0}})
-	data = append(data, point{[]float64{43.0,7.0,12.0,7.0}})
-	data = append(data, point{[]float64{2.0,12.0,5.0,8.0}})
-	data = append(data, point{[]float64{12.0,1945.0,34.0,65.0}})
-	fmt.Println(kmeans(data, 2))
-	
+func main() {
+	fmt.Println("Hello World!")
+	data := []kmeans.Point{}
+    data = append(data, kmeans.Point{[]float64{1.0,3.0,5.0,2.0}})
+    data = append(data, kmeans.Point{[]float64{43.0,7.0,12.0,7.0}})
+    data = append(data, kmeans.Point{[]float64{2.0,12.0,5.0,8.0}})
+    data = append(data, kmeans.Point{[]float64{12.0,1945.0,34.0,65.0}})
+    fmt.Println(kmeans.KMEANS(data, 2))
 }
 ```
