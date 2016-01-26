@@ -1,5 +1,5 @@
 # k-means.go
-a naive kmeans implementation in Go
+a ready-to-use naive kmeans package for Go
 
 
 ```
