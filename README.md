@@ -3,8 +3,11 @@ a ready-to-use naive kmeans package for Go
 
 
 ```
+package main
+
 import (
 	"fmt"
+	"kmeans"
 )
 
 func main(){
