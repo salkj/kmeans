@@ -2,7 +2,7 @@
 a ready-to-use naive kmeans package for Go
 
 
-```
+```go
 package main
 
 import (
